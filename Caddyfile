@@ -1,0 +1,24 @@
+:8080 {
+    root * .
+    encode gzip
+    file_server
+
+    # PWA assets served from this folder
+    handle_path /service-worker.js* {
+        file_server
+    }
+    handle_path /manifest.webmanifest* {
+        file_server
+    }
+    handle_path /icons/* {
+        file_server
+    }
+    handle_path / {
+        file_server
+    }
+
+    # Proxy your Streamlit app (make sure it’s running on 8509)
+    handle_path /app/* {
+        reverse_proxy 127.0.0.1:8507
+    }
+}
