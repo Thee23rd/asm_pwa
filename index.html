@@ -4,12 +4,14 @@
   <meta charset="utf-8" />
   <title>ASM Conference Register</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="manifest" href="/manifest.webmanifest" />
+  <!-- IMPORTANT: set your Pages base path -->
+  <script>const BASE = "/asm-pwa";</script>
+  <link rel="manifest" href="/asm-pwa/manifest.webmanifest" />
   <meta name="theme-color" content="#32B525" />
-  <!-- iOS install helpers -->
+  <!-- iOS helpers -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="/asm-pwa/icons/coat of arms.PNG" sizes="192x192" type="image.png" />
   <style>
     html, body, iframe { height: 100%; width: 100%; margin: 0; border: 0; }
     body { background: #000; }
@@ -17,12 +19,12 @@
   </style>
 </head>
 <body>
-  <!-- Streamlit will be proxied to /app/ by Caddy (next step) -->
-  <iframe src="/app/" title="ASM Conference Register"></iframe>
+  <!-- Streamlit app (cross-origin). Install works; offline limited. -->
+  <iframe src="https://zambia-asm-conf.streamlit.app/" title="ASM Conference Register"></iframe>
 
   <script>
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/service-worker.js");
+      navigator.serviceWorker.register(`${BASE}/service-worker.js`);
     }
   </script>
 </body>

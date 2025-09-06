@@ -1,4 +1,4 @@
-:8080 {
+zambia-asm-conf.streamlit.app {
     root * .
     encode gzip
     file_server
@@ -19,6 +19,6 @@
 
     # Proxy your Streamlit app (make sure it’s running on 8509)
     handle_path /app/* {
-        reverse_proxy 127.0.0.1:8507
+        reverse_proxy 127.0.0.1:8510
     }
 }
